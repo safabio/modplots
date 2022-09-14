@@ -1,12 +1,15 @@
 Package: modplots
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Modified version of common Seurat and other plotting functions.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Fabio Sacher
+Maintainer: Fabio Sacher <fabio.sacher@unibas.ch>
+Description: This package contains plotting functions, that build on existing functions but adds practical options. 
+    For mDotPlot2 and mFeaturePlot, automatic gene ID to name conversion is added.
+    mVolcanoPlot plots a polished volcano plot, highlighting up and down regulated genes based on p-val and log fold change thresholds.
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)

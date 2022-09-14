@@ -35,9 +35,10 @@
 #'
 #' @return A ggplot object
 #'
-#' @import grDevices rlang
+#' @import grDevices
+#' @import rlang
+#' @import Seurat
 #' @import cowplot
-#' @import ggplot2
 #' @import stats
 #' @import RColorBrewer
 #'
@@ -67,7 +68,7 @@ mDotPlot2 <- function(
   scale.by = 'radius',
   scale.min = NA,
   scale.max = NA,
-  gnames=NULL ###
+  gnames=modplots::gnames ###
 ) {
   assay <- assay %||% DefaultAssay(object = object)
   DefaultAssay(object = object) <- assay
@@ -97,7 +98,7 @@ mDotPlot2 <- function(
     names(x = feature.groups) <- features
   }
   cells <- unlist(x = CellsByIdentities(object = object, idents = idents))
-  data.features <- FetchData(object = object, vars = features, cells = cells)
+  data.features <- SeuratObject::FetchData(object = object, vars = features, cells = cells)
   data.features$id <- if (is.null(x = group.by)) {
     Idents(object = object)[cells, drop = TRUE]
   } else {
