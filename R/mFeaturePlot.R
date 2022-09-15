@@ -7,29 +7,25 @@
 #' @param my.reduct name of reduction to take from the embedding slot. e.g.: pca, tsne, umap ...
 #' @param my.slot slot to take the data from. e.g.: counts, data, scale.data
 #' @param my.features Vector of features to plot. Features must be present in modplots::gnames$Gene.name!
-#' @param colors Vector of colors, used in scale_colour_gradientn()
+#' @param colors Vector of colors, used in scale_colour_gradientn(). Gradient from low to high expression.
 #' @param size pt size of geom_point
 #' @param alpha alpha parameter for geom_point
 #' @param order Boolean determining whether to plot cells in order of expression. Can be useful if
 #' cells expressing given feature are getting buried.
-#' @param return Boolean, wether to return a plot (FALSE, default) or a list of ggplot objects (TRUE)
+#' @param return Boolean, whether to return a plot (FALSE, default) or a list of ggplot objects (TRUE)
 #'
 #' @return A grid.arrange plot if
 #' \code{return = FALSE}; otherwise, a list of ggplot objects
 #'
 #'
 #' @import grDevices
-#' @import Seurat
+#' @importFrom Seurat Embeddings GetAssayData
 #' @import rlang
-#' @import gridExtra
-#' @import RColorBrewer
-#' @import ggplot2
+#' @importFrom gridExtra grid.arrange
+#' @importFrom ggplot2 ggplot geom_point scale_colour_gradientn theme_classic labs ggtitle theme aes
+#' @importFrom dplyr arrange
 #'
 #' @export
-#'
-#'
-#'
-#'
 #'
 
 mFeaturePlot <- function(my.se,
@@ -46,6 +42,9 @@ mFeaturePlot <- function(my.se,
     stop("my.se must be an object of class Seurat")
   }
 
+  if (is.null(my.features)) {
+    stop("You must provide features to plot.")
+  }
   emb <- data.frame(Embeddings(my.se, my.reduc))
   colnames(emb) <- c("reduc_1", "reduc_2")
 
@@ -85,7 +84,7 @@ mFeaturePlot <- function(my.se,
     colnames(tmp) <- c("reduc_1","reduc_2","gene")
 
     if(order) {
-      tmp <- dplyr::arrange(tmp, gene)
+      tmp <- arrange(tmp, gene)
     }
 
     my.plots[[i]] <- ggplot(tmp, aes(x = reduc_1, y = reduc_2, color = gene)) +

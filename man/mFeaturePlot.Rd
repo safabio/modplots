@@ -26,7 +26,7 @@ mFeaturePlot(
 
 \item{my.features}{Vector of features to plot. Features must be present in modplots::gnames$Gene.name!}
 
-\item{colors}{Vector of colors, used in scale_colour_gradientn()}
+\item{colors}{Vector of colors, used in scale_colour_gradientn(). Gradient from low to high expression.}
 
 \item{size}{pt size of geom_point}
 
@@ -35,7 +35,7 @@ mFeaturePlot(
 \item{order}{Boolean determining whether to plot cells in order of expression. Can be useful if
 cells expressing given feature are getting buried.}
 
-\item{return}{Boolean, wether to return a plot (FALSE, default) or a list of ggplot objects (TRUE)}
+\item{return}{Boolean, whether to return a plot (FALSE, default) or a list of ggplot objects (TRUE)}
 }
 \value{
 A grid.arrange plot if
