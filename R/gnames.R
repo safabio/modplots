@@ -2,6 +2,7 @@
 #'
 #' A data frame of chicken genes and IDs to annotate plots. Created as following:
 #'
+#' \preformatted{
 #' gnames <- read.delim("~/Neuraltube/gg6_genes.txt")
 #'    i <- sapply(gnames, is.factor)
 #'    gnames[i] <- lapply(gnames[i], as.character)
@@ -10,7 +11,7 @@
 #'             gnames[i,"Gene.name"] <- gnames[i,"Gene.stable.ID"],
 #'             gnames[i,"Gene.name"] <- gnames[i,"Gene.name"])
 #'    }
-#'
+#' }
 #' @format A data frame with 24356 rows and 2 variables:
 #' \describe{
 #'   \item{Gene.stable.ID}{Ensembl ID for chicken genes}

@@ -14,7 +14,8 @@ mFeaturePlot(
   size = 2,
   alpha = 0.4,
   order = TRUE,
-  return = FALSE
+  return = FALSE,
+  gnames = NULL
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ mFeaturePlot(
 cells expressing given feature are getting buried.}
 
 \item{return}{Boolean, whether to return a plot (FALSE, default) or a list of ggplot objects (TRUE)}
+
+\item{gnames}{Optional, data frame of two columns, Gene.stable.ID and Gene.name. If none is specified, internal gg6 chicken gnames table is used.}
 }
 \value{
 A grid.arrange plot if

@@ -11,6 +11,7 @@
 #' @param p.adj Adjusted p-value threshold
 #' @param return Boolean whether to return a plot (FALSE, default) or a ggplot objects (TRUE)
 #' @param plotly Boolean whether to plot the volcano plot with plotly to create an interactive plot.
+#' @param gnames Optional, data frame of two columns, Gene.stable.ID and Gene.name. If none is specified, internal gg6 chicken gnames table is used.
 #'
 #' @details Adjusted pvals of 0 are capped to 1e-350 so they are not driven to infinity by -log10 transformation.
 #'
@@ -29,12 +30,17 @@ mVolcanoplot <- function(table,
                          l2fc = log2(2),
                          p.adj = 0.05,
                          return = FALSE,
-                         plotly = FALSE) {
+                         plotly = FALSE,
+                         gnames = NULL) {
   if (!type %in% c("seurat", "deseq2", "none")) {
     stop("type should be either seurat, deseq2, or none")
   }
 
-  gnames <- modplots::gnames
+  if (is.null(gnames)) {
+    gnames <- modplots::gnames
+  } else if (!all(colnames(gnames) %in% c("Gene.name", "Gene.stable.ID"))) {
+    stop("gnames should contain two rows and two rows only, called: Gene.stable.ID and Gene.name")
+  }
 
   if (type == "seurat") {
     table <- select(table, gene, avg_log2FC, p_val_adj)

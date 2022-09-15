@@ -10,7 +10,8 @@ mVolcanoplot(
   l2fc = log2(2),
   p.adj = 0.05,
   return = FALSE,
-  plotly = FALSE
+  plotly = FALSE,
+  gnames = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ specified the function looks for "gene" or "id", "adj", and "2F" in the tables c
 \item{return}{Boolean whether to return a plot (FALSE, default) or a ggplot objects (TRUE)}
 
 \item{plotly}{Boolean whether to plot the volcano plot with plotly to create an interactive plot.}
+
+\item{gnames}{Optional, data frame of two columns, Gene.stable.ID and Gene.name. If none is specified, internal gg6 chicken gnames table is used.}
 }
 \value{
 A ggplot plot if \code{return = FALSE}, or else a ggplot object.

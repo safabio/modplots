@@ -13,6 +13,7 @@
 #' @param order Boolean determining whether to plot cells in order of expression. Can be useful if
 #' cells expressing given feature are getting buried.
 #' @param return Boolean, whether to return a plot (FALSE, default) or a list of ggplot objects (TRUE)
+#' @param gnames Optional, data frame of two columns, Gene.stable.ID and Gene.name. If none is specified, internal gg6 chicken gnames table is used.
 #'
 #' @return A grid.arrange plot if
 #' \code{return = FALSE}; otherwise, a list of ggplot objects
@@ -36,7 +37,8 @@ mFeaturePlot <- function(my.se,
                          size=2,
                          alpha = 0.4,
                          order = TRUE,
-                         return = FALSE) {
+                         return = FALSE,
+                         gnames = NULL) {
 
   if (!any(class(my.se) == "Seurat")) {
     stop("my.se must be an object of class Seurat")
@@ -48,7 +50,11 @@ mFeaturePlot <- function(my.se,
   emb <- data.frame(Embeddings(my.se, my.reduc))
   colnames(emb) <- c("reduc_1", "reduc_2")
 
-  gnames <- modplots::gnames
+  if (is.null(gnames)) {
+    gnames <- modplots::gnames
+  } else if (!all(colnames(gnames) %in% c("Gene.name", "Gene.stable.ID"))) {
+    stop("gnames should contain two rows and two rows only, called: Gene.stable.ID and Gene.name")
+  }
 
   my.features <- toupper(my.features)
 

@@ -22,6 +22,7 @@ gnames
 A data frame of chicken genes and IDs to annotate plots. Created as following:
 }
 \details{
+\preformatted{
 gnames <- read.delim("~/Neuraltube/gg6_genes.txt")
    i <- sapply(gnames, is.factor)
    gnames[i] <- lapply(gnames[i], as.character)
@@ -30,5 +31,6 @@ gnames <- read.delim("~/Neuraltube/gg6_genes.txt")
             gnames[i,"Gene.name"] <- gnames[i,"Gene.stable.ID"],
             gnames[i,"Gene.name"] <- gnames[i,"Gene.name"])
    }
+}
 }
 \keyword{datasets}
