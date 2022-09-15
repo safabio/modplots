@@ -4,6 +4,12 @@ This package contains currently 3 plotting functions for chicken RNA seq data, a
 
 All three functions allow you to add your own gnames table, making it applicable to all species. The table should contain to columns named: "Gene.stable.ID" and "Gene.name".
 
+## Installation
+
+To install modplots run in R:
+
+`devtools::install_github("safabio/modplots", ref="main")`
+
 ## mFeatureplot
 
 Allows you to plot any embedding of your Seurat object, and highlight gene expression from any assay. Currently there is no control over the assay used. Please set the active assay beforehand.
