@@ -21,7 +21,7 @@ mDotPlot2(
   scale.by = "radius",
   scale.min = NA,
   scale.max = NA,
-  gnames = modplots::gnames
+  gnames = NULL
 )
 }
 \arguments{

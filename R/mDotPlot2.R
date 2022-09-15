@@ -64,7 +64,7 @@ mDotPlot2 <- function(
   scale.by = 'radius',
   scale.min = NA,
   scale.max = NA,
-  gnames=modplots::gnames ###
+  gnames = NULL ###
 ) {
   assay <- assay %||% DefaultAssay(object = object)
   DefaultAssay(object = object) <- assay
@@ -76,6 +76,13 @@ mDotPlot2 <- function(
     stop("'scale.by' must be either 'size' or 'radius'")
   )
   feature.groups <- NULL
+
+  if (is.null(gnames)) {
+    gnames <- modplots::gnames
+  } else if (!all(colnames(gnames) %in% c("Gene.name", "Gene.stable.ID"))) {
+    stop("gnames should contain two rows and two rows only, called: Gene.stable.ID and Gene.name")
+  }
+
   if (is.list(features) | any(!is.na(names(features)))) {
     feature.groups <- unlist(x = sapply(
       X = 1:length(features),
