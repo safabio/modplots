@@ -70,7 +70,7 @@ mPCA <- function(vsd,
       }
     }
 
-    if (!is.null(shape) & !is.null(pch) & !identical(length(pch), length(levels(meta[, shape])))) {
+    if (!is.null(shape) & !is.null(pch) & !identical(length(pch), length(levels(droplevels(meta[, shape]))))) {
       stop("pch should be the same lenght as levels in the meta[, shape] column!")
     }
   }
@@ -94,8 +94,8 @@ mPCA <- function(vsd,
 
   percentVar <- pca$sdev^2 / sum( pca$sdev^2 )
 
-  xvar <- paste0(PCs[1], " : ",round(percentVar[1] * 100),"% variance")
-  yvar <- paste0(PCs[2], " : ",round(percentVar[2] * 100),"% variance")
+  xvar <- paste0(PCs[1], " : ",round(percentVar[as.numeric(substr(PCs[1],3,3))] * 100),"% variance")
+  yvar <- paste0(PCs[2], " : ",round(percentVar[as.numeric(substr(PCs[2],3,3))] * 100),"% variance")
 
   PC <- as.data.frame(pca$x)
   PC <- rownames_to_column(PC, "sample")
@@ -109,7 +109,7 @@ mPCA <- function(vsd,
   }
 
 
-  PC_plot <- ggplot(data = PC, aes_string(x="PC1", y="PC2", color = group, shape = shape)) +
+  PC_plot <- ggplot(data = PC, aes_string(x=PCs[1], y=PCs[2], color = group, shape = shape)) +
     geom_point(size=3) +
     xlab(xvar) +
     ylab(yvar)
