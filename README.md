@@ -26,6 +26,10 @@ Volcano plot function for Seurat and DESeq2 generated DE tables. The backbone of
 Also any other DE table can be given as input, the column names should contain: "gene" or "id" for the ID column, "2F" for the log2 fold change, and "adj" for the adjusted p values. 
 Plot can be generated with plotly to create an interactive plot to inspect directly gene names, p val adj and lo2FC's.
 
+## mPCA
+
+Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point().
+
 ## gnames
 
 Gg6 gene ID and name table. For details use: `?gnames`.
