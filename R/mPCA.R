@@ -70,9 +70,9 @@ mPCA <- function(vsd,
       }
     }
 
-    # if (!is.null(shape) & !is.null(pch) & !identical(length(pch), length(levels(meta[, shape])))) {
-    #   stop("pch should be the same lenght as levels in the meta[, shape] column!")
-    # }
+    if (!is.null(shape) & !is.null(pch) & !identical(length(pch), length(levels(meta[, shape])))) {
+      stop("pch should be the same lenght as levels in the meta[, shape] column!")
+    }
   }
 
 
@@ -109,13 +109,13 @@ mPCA <- function(vsd,
   }
 
 
-  PC_plot <- ggplot(data = PC, aes_string(x="PC1", y="PC2", color = group)) +
+  PC_plot <- ggplot(data = PC, aes_string(x="PC1", y="PC2", color = group, shape = shape)) +
     geom_point(size=3) +
     xlab(xvar) +
     ylab(yvar)
 
   if (!is.null(shape)) {
-    PC_plot <- PC_plot + scale_shape_manual(aes_string(shape = shape), values = pch)
+    PC_plot <- PC_plot + scale_shape_manual(values = pch)
   }
 
   if (!is.null(label)) {
