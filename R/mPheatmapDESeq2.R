@@ -33,7 +33,7 @@ mPheatmapDESeq2 <- function(vsd,
 
     toplot$Gene.stable.ID <- NULL
 
-    lim <- max(floor(min(toplot)*100), floor(max(toplot)*100))
+    lim <- max(abs(floor(min(toplot)*100)), abs(floor(max(toplot)*100)))
 
     FDQ_AM_lig_htmp <- pheatmap(
       toplot,
