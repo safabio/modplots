@@ -11,6 +11,7 @@
 #'             gnames[i,"Gene.name"] <- gnames[i,"Gene.stable.ID"],
 #'             gnames[i,"Gene.name"] <- gnames[i,"Gene.name"])
 #'    }
+#'    gnames$Gene.name <- make.unique(gnames$Gene.name, sep = "v")
 #' }
 #' @format A data frame with 24356 rows and 2 variables:
 #' \describe{
