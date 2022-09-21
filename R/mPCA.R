@@ -13,6 +13,7 @@
 #' @param shape Column of vsd`@`colData used as aesthetic for point shapes in the PCA. Meta data column if meta data is specified.
 #' @param pch vector of point characters if shape is specified, same length as factor levels in shape.
 #' @param colors color vector, should be same length as factor levels in group
+#' @param pt.size integer, sets pointsize in geom_point.
 #' @param return Boolean whether to return a plot (Default = FALSE) or a ggplot object list (TRUE)
 #'
 #' @importFrom MatrixGenerics rowVars
@@ -38,6 +39,7 @@ mPCA <- function(vsd,
                  shape = NULL,
                  pch = NULL,
                  colors = NULL,
+                 pt.size = 3,
                  return = FALSE) {
 
   if (!class(vsd)[[1]] == "DESeqTransform") {
@@ -110,7 +112,7 @@ mPCA <- function(vsd,
 
 
   PC_plot <- ggplot(data = PC, aes_string(x=PCs[1], y=PCs[2], color = group, shape = shape)) +
-    geom_point(size=3) +
+    geom_point(size=pt.size) +
     xlab(xvar) +
     ylab(yvar)
 

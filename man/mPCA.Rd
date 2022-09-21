@@ -15,6 +15,7 @@ mPCA(
   shape = NULL,
   pch = NULL,
   colors = NULL,
+  pt.size = 3,
   return = FALSE
 )
 }
@@ -39,6 +40,8 @@ If you specify a meta data frame, you have to also specify group, which should b
 \item{pch}{vector of point characters if shape is specified, same length as factor levels in shape.}
 
 \item{colors}{color vector, should be same length as factor levels in group}
+
+\item{pt.size}{integer, sets pointsize in geom_point.}
 
 \item{return}{Boolean whether to return a plot (Default = FALSE) or a ggplot object list (TRUE)}
 }
