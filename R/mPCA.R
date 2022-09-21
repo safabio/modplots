@@ -3,7 +3,7 @@
 #' Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation).
 #'
 #' @param vsd Variance stabilising transformed dds (vsd <- vst(dds)).
-#' @param ntop integer, number of variable genes to use for PCA.
+#' @param ntop integer, number of variable genes or the first n elements of genes to use for PCA.
 #' @param PCs character vector of length two, containing the two PCs to plot (default to: c("PC1", "PC2")).
 #' @param genes vector of gene IDs to use instead of internally calculated variable genes.
 #' @param meta Meta data frame for ggplot aestetics, if not specified grouping will be taken from \code{vsd`@`colData}.
@@ -30,7 +30,7 @@
 
 
 mPCA <- function(vsd,
-                 ntop,
+                 ntop = NULL,
                  PCs = c("PC1", "PC2"),
                  genes = NULL,
                  meta = NULL,
@@ -80,7 +80,7 @@ mPCA <- function(vsd,
 
   ntop <- as.integer(ntop)
 
-  if (!is.integer(ntop)) {
+  if (!is.integer(ntop) & is.null(genes)) {
     stop("ntop must be of type integer!")
   }
 
@@ -88,11 +88,14 @@ mPCA <- function(vsd,
   if (is.null(genes)) {
     rv <- rowVars(assay(vsd))
     select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
+    pca <- prcomp(t(assay(vsd)[select, ]))
   } else {
-    select <- genes
+    subs <- assay(vsd)
+    subs <- subs[rownames(subs) %in% genes, ]
+    rv <- rowVars(subs)
+    select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
+    pca <- prcomp(t(subs[select, ]))
   }
-
-  pca <- prcomp(t(assay(vsd)[select, ]))
 
   percentVar <- pca$sdev^2 / sum( pca$sdev^2 )
 
