@@ -30,6 +30,10 @@ Plot can be generated with plotly to create an interactive plot to inspect direc
 
 Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point().
 
+## mPheatmapDESEq2
+
+Modified pheatmap function for vst transformed dds objects. 
+
 ## gnames
 
 Gg6 gene ID and name table. For details use: `?gnames`.
