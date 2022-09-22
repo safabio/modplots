@@ -1,6 +1,6 @@
 #' mPCA
 #'
-#' Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation).
+#' Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation). Automatically returns pca object (prcomp output) to global env.
 #'
 #' @param vsd Variance stabilising transformed dds (vsd <- vst(dds)).
 #' @param ntop integer, number of variable genes or the first n elements of genes to use for PCA.
@@ -88,13 +88,13 @@ mPCA <- function(vsd,
   if (is.null(genes)) {
     rv <- rowVars(assay(vsd))
     select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
-    pca <- prcomp(t(assay(vsd)[select, ]))
+    pca <<- prcomp(t(assay(vsd)[select, ]))
   } else {
     subs <- assay(vsd)
     subs <- subs[rownames(subs) %in% genes, ]
     rv <- rowVars(subs)
     select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
-    pca <- prcomp(t(subs[select, ]))
+    pca <<- prcomp(t(subs[select, ]))
   }
 
   percentVar <- pca$sdev^2 / sum( pca$sdev^2 )

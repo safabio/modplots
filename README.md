@@ -28,7 +28,7 @@ Plot can be generated with plotly to create an interactive plot to inspect direc
 
 ## mPCA
 
-Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point().
+Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point(). Automatically returns pca object (prcomp output) to global env.
 
 ## mPheatmapDESEq2
 

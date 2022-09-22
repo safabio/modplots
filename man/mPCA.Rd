@@ -6,7 +6,7 @@
 \usage{
 mPCA(
   vsd,
-  ntop,
+  ntop = NULL,
   PCs = c("PC1", "PC2"),
   genes = NULL,
   meta = NULL,
@@ -22,7 +22,7 @@ mPCA(
 \arguments{
 \item{vsd}{Variance stabilising transformed dds (vsd <- vst(dds)).}
 
-\item{ntop}{integer, number of variable genes to use for PCA.}
+\item{ntop}{integer, number of variable genes or the first n elements of genes to use for PCA.}
 
 \item{PCs}{character vector of length two, containing the two PCs to plot (default to: c("PC1", "PC2")).}
 
@@ -46,5 +46,5 @@ If you specify a meta data frame, you have to also specify group, which should b
 \item{return}{Boolean whether to return a plot (Default = FALSE) or a ggplot object list (TRUE)}
 }
 \description{
-Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation).
+Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation). Automatically returns pca object (prcomp output) to global env.
 }

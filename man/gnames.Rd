@@ -31,6 +31,7 @@ gnames <- read.delim("~/Neuraltube/gg6_genes.txt")
             gnames[i,"Gene.name"] <- gnames[i,"Gene.stable.ID"],
             gnames[i,"Gene.name"] <- gnames[i,"Gene.name"])
    }
+   gnames$Gene.name <- make.unique(gnames$Gene.name, sep = "v")
 }
 }
 \keyword{datasets}
