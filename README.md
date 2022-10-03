@@ -34,6 +34,10 @@ Function using plotPCA from DESeq2. You can specify grouping variables and PCs t
 
 Modified pheatmap function for vst transformed dds objects. 
 
+## loadingPlot
+
+Plots the absolute loadings of a prcomp object. At the same time it adds the names of the top n loading genes (by absolute value).
+
 ## gnames
 
 Gg6 gene ID and name table. For details use: `?gnames`.
