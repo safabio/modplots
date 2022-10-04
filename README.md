@@ -6,13 +6,17 @@
 
 This package contains currently 6 plotting functions for chicken RNA seq data, as well as an annotated gene id /gene name table.
 
-All three functions allow you to add your own gnames table, making it applicable to all species. The table should contain to columns named: "Gene.stable.ID" and "Gene.name".
+It also provides a chicken gene table gnames from ensembl. 
+
+The functions mFeatureplot, mDotPlot2, mVolcanoplot, and mPheatmapDESeq2 allow you to add your own gnames table, making it applicable to all species. The table should contain two columns named: "Gene.stable.ID" and "Gene.name".
 
 ## Installation
 
 To install modplots run in R:
 
-`devtools::install_github("safabio/modplots", ref="main")`
+```r
+devtools::install_github("safabio/modplots", ref="main")
+```
 
 ## mFeatureplot
 
