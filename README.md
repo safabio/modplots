@@ -34,6 +34,7 @@ Modified DotPlot function from Seurat. Automatically adds gene names as labels. 
 Volcano plot function for Seurat and DESeq2 generated DE tables. The backbone of the function is taken from [here](https://erikaduan.github.io/posts/2021-01-02-volcano-plots-with-ggplot2/).
 
 Also any other DE table can be given as input, the column names should contain: "gene" or "id" for the ID column, "2F" for the log2 fold change, and "adj" for the adjusted p values. 
+
 Plot can be generated with plotly to create an interactive plot to inspect directly gene names, p val adj and lo2FC's.
 
 ## mPCA
@@ -41,7 +42,9 @@ Plot can be generated with plotly to create an interactive plot to inspect direc
 <img src="man/figures/mPCA.png" align="right" height="40%" width="40%" />
 
 Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point().
+
 Automatically returns pca object (prcomp output) to global env.
+
 Currently there is no plotly implementation, group, shape, and label should be sufficient aesthetics. For a high number of samples, overplotting might become a problem.
 
 ## mPheatmapDESEq2
