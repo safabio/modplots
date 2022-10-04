@@ -25,7 +25,7 @@ Modified DotPlot function from Seurat. Automatically adds gene names as labels. 
 
 ## mVolcanoplot 
 
-<img src="man/figures/mVolcanoplot.png" align="right" height="25%" width="25%" />
+<img src="man/figures/mVolcanoplot.png" align="right" height="40%" width="40%" />
 
 Volcano plot function for Seurat and DESeq2 generated DE tables. The backbone of the function is taken from [here](https://erikaduan.github.io/posts/2021-01-02-volcano-plots-with-ggplot2/).
 
@@ -34,7 +34,7 @@ Plot can be generated with plotly to create an interactive plot to inspect direc
 
 ## mPCA
 
-<img src="man/figures/mPCA.png" align="right" height="25%" width="25%" />
+<img src="man/figures/mPCA.png" align="right" height="40%" width="40%" />
 
 Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point(). Automatically returns pca object (prcomp output) to global env.
 
