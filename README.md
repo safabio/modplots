@@ -1,5 +1,9 @@
 # modplots package
 
+[![ISSUES](https://img.shields.io/github/issues/safabio/modplots)](https://github.com/safabio/modplots/issues)
+[![Stars](https://img.shields.io/github/stars/safabio/modplots?style=social)](https://github.com/safabio/modplots/)
+
+
 This package contains currently 3 plotting functions for chicken RNA seq data, as well as an annotated gene id /gene name table.
 
 All three functions allow you to add your own gnames table, making it applicable to all species. The table should contain to columns named: "Gene.stable.ID" and "Gene.name".
@@ -14,6 +18,8 @@ To install modplots run in R:
 
 Allows you to plot any embedding of your Seurat object, and highlight gene expression from any assay. Currently there is no control over the assay used. Please set the active assay beforehand.
 Contrary to Seurats FeaturePlot, you have greater control over the color gradient, and it allows you to specify genes via name and not IDs. Also the title of the plot will be the gene's name, instead of its stable ID.
+
+<img src="man/figures/logo.png" align="right" height="20%" width="20%" />
 
 ## mDotPlot2
 
