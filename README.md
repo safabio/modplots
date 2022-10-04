@@ -36,13 +36,15 @@ Plot can be generated with plotly to create an interactive plot to inspect direc
 
 <img src="man/figures/mPCA.png" align="right" height="40%" width="40%" />
 
-Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point(). Automatically returns pca object (prcomp output) to global env.
+Function using plotPCA from DESeq2. You can specify grouping variables and PCs to plot. Additionally you can use shape and label aesthetics to control those ggplot parameters in geom_point().
+Automatically returns pca object (prcomp output) to global env.
+Currently there is no plotly implementation, group, shape, and label should be sufficient aesthetics. For a high number of samples, overplotting might become a problem.
 
 ## mPheatmapDESEq2
 
 Modified pheatmap function for vst transformed dds objects. 
 
-![](man/figures/mPheatmapDESeq2.png){}
+![](man/figures/mPheatmapDESeq2.png)
 
 ## loadingPlot
 
