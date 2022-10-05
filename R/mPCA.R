@@ -3,7 +3,7 @@
 #' Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation). Automatically returns pca object (prcomp output) to global env.
 #'
 #' @param vsd Variance stabilising transformed dds (vsd <- vst(dds)).
-#' @param ntop integer, number of variable genes or the first n elements of genes to use for PCA.
+#' @param ntop integer, number of variable genes or the first n elements of genes to use for PCA. Defaults to 200 top variable genes.
 #' @param PCs character vector of length two, containing the two PCs to plot (default to: c("PC1", "PC2")).
 #' @param genes vector of gene IDs to use instead of internally calculated variable genes.
 #' @param meta Meta data frame for ggplot aestetics, if not specified grouping will be taken from \code{vsd`@`colData}.
@@ -21,7 +21,7 @@
 #' @importFrom stats prcomp
 #' @importFrom tibble rownames_to_column
 #' @importFrom dplyr left_join
-#' @importFrom ggplot2 ggplot geom_point scale_shape_manual xlab ylab scale_color_manual
+#' @importFrom ggplot2 ggplot geom_point scale_shape_manual xlab ylab scale_color_manual aes_string
 #' @importFrom BiocGenerics as.data.frame
 #' @importFrom ggrepel geom_label_repel
 #'
@@ -30,7 +30,7 @@
 
 
 mPCA <- function(vsd,
-                 ntop = NULL,
+                 ntop = 200,
                  PCs = c("PC1", "PC2"),
                  genes = NULL,
                  meta = NULL,
