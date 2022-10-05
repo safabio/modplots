@@ -6,7 +6,7 @@
 \usage{
 mPCA(
   vsd,
-  ntop = NULL,
+  ntop = 200,
   PCs = c("PC1", "PC2"),
   genes = NULL,
   meta = NULL,
@@ -22,7 +22,7 @@ mPCA(
 \arguments{
 \item{vsd}{Variance stabilising transformed dds (vsd <- vst(dds)).}
 
-\item{ntop}{integer, number of variable genes or the first n elements of genes to use for PCA.}
+\item{ntop}{integer, number of variable genes or the first n elements of genes to use for PCA. Defaults to 200 top variable genes.}
 
 \item{PCs}{character vector of length two, containing the two PCs to plot (default to: c("PC1", "PC2")).}
 

@@ -4,14 +4,14 @@
 \alias{loadingPlot}
 \title{loadingPlot}
 \usage{
-loadingPlot(x, PC, n, return = FALSE)
+loadingPlot(x, PC = "PC1", n = 10, return = FALSE)
 }
 \arguments{
 \item{x}{Output of type prcomp. If you use mPCA, pca is a default output.}
 
 \item{PC}{which PC to take the loadings from ('PCx')}
 
-\item{n}{numbers of genes to plot}
+\item{n}{numbers of gene names to plot}
 
 \item{return}{Boolean to determine whether to return a ggplot object or not (default = FALSE just returns the plot)}
 }

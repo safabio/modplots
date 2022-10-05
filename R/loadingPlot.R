@@ -17,8 +17,8 @@
 #' @examples loadingPlot(pca, PC = "PC1", n = 200)
 #'
 loadingPlot <- function(x,
-                        PC,
-                        n,
+                        PC = "PC1",
+                        n = 10,
                         return = FALSE) {
   if (class(x) != "prcomp") {
     stop("x has to be of class 'prcomp'")
