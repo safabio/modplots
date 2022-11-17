@@ -47,7 +47,7 @@ mFeaturePlot <- function(my.se,
   if (is.null(my.features)) {
     stop("You must provide features to plot.")
   }
-  emb <- data.frame(Embeddings(my.se, my.reduc))
+  emb <- data.frame(Embeddings(my.se, my.reduct))
   colnames(emb) <- c("reduc_1", "reduc_2")
 
   if (is.null(gnames)) {
