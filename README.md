@@ -18,7 +18,7 @@ To install modplots run in R:
 devtools::install_github("safabio/modplots", ref="main")
 ```
 
-## mFeatureplot
+## mFeaturePlot
 
 Allows you to plot any embedding of your Seurat object, and highlight gene expression from any assay. Currently there is no control over the assay used. Please set the active assay beforehand.
 Contrary to Seurats FeaturePlot, you have greater control over the color gradient, and it allows you to specify genes via name and not IDs. Also the title of the plot will be the gene's name, instead of its stable ID.
