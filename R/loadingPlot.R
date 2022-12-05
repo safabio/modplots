@@ -7,15 +7,15 @@
 #' @param n numbers of gene names to plot
 #' @param return Boolean to determine whether to return a ggplot object or not (default = FALSE just returns the plot)
 #'
-#' @importFrom dplyr arrange mutate left_join
+#' @importFrom dplyr arrange mutate left_join desc
 #' @importFrom tibble rownames_to_column
 #' @importFrom ggplot2 ggplot geom_point annotate xlim labs
 #' @importFrom cowplot theme_cowplot
 #'
 #' @export
 #'
-#' @examples loadingPlot(pca, PC = "PC1", n = 200)
 #'
+
 loadingPlot <- function(x,
                         PC = "PC1",
                         n = 10,
@@ -43,7 +43,7 @@ loadingPlot <- function(x,
                   aes(
                     x = Index,
                     y = abs(!!as.name(PC)),
-                    label = Gene.name
+                    label = .data$Gene.name
                   )) +
     geom_point() +
     annotate(

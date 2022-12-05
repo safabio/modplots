@@ -1,6 +1,6 @@
 Package: modplots
 Type: Package
-Title: Modified version of common Seurat and other plotting functions.
+Title: Modified version of common Seurat and other plotting functions
 Version: 0.1.2
 Author: Fabio Sacher
 Maintainer: Fabio Sacher <fabio.sacher@unibas.ch>
@@ -12,4 +12,22 @@ LazyData: true
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 3.5.0)
+Imports: AnnotationDbi,
+ BiocGenerics,
+ MatrixGenerics,
+ RColorBrewer,
+ Seurat,
+ SeuratObject,
+ magrittr,
+ SummarizedExperiment,
+ cowplot,
+ dplyr,
+ ggplot2,
+ ggrepel,
+ gridExtra,
+ org.Gg.eg.db,
+ pheatmap,
+ plotly,
+ rlang,
+ tibble
 License: MIT + file LICENSE

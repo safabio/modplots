@@ -1,7 +1,7 @@
 #' Visualize 'features' on a dimensional reduction plot
 #'
 #' Colors single cells on a dimensional reduction plot according to a 'feature'
-#' (i.e. gene expression, PC scores, number of genes detected, etc.)
+#' (i.e. gene expression, PC scores, number of genes detected, etc.) Base Code taken from Seurat::DotPlot.
 #'
 #' @param my.se Seurat object
 #' @param my.reduct name of reduction to take from the embedding slot. e.g.: pca, tsne, umap ...
@@ -23,7 +23,7 @@
 #' @importFrom Seurat Embeddings GetAssayData
 #' @import rlang
 #' @importFrom gridExtra grid.arrange
-#' @importFrom ggplot2 ggplot geom_point scale_colour_gradientn theme_classic labs ggtitle theme aes
+#' @importFrom ggplot2 ggplot geom_point scale_colour_gradientn theme_classic labs ggtitle theme aes .data
 #' @importFrom dplyr arrange
 #'
 #' @export
@@ -90,10 +90,10 @@ mFeaturePlot <- function(my.se,
     colnames(tmp) <- c("reduc_1","reduc_2","gene")
 
     if(order) {
-      tmp <- arrange(tmp, gene)
+      tmp <- arrange(tmp, .data$gene)
     }
 
-    my.plots[[i]] <- ggplot(tmp, aes(x = reduc_1, y = reduc_2, color = gene)) +
+    my.plots[[i]] <- ggplot(tmp, aes_string(x = "reduc_1", y = "reduc_2", color = "gene")) +
       geom_point(size=size, alpha = 0.4, pch = 19) +
       scale_colour_gradientn(colours = colors) +
       theme_classic() + labs(colour=name) + ggtitle(name) + theme(plot.title = element_text(hjust = 0.5, face = "bold"))

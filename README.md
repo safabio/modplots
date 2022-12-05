@@ -1,5 +1,6 @@
 # modplots package
 
+[![R-CMD-check](https://github.com/safabio/modplots/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/safabio/modplots/actions/workflows/check-standard.yaml)
 [![ISSUES](https://img.shields.io/github/issues/safabio/modplots)](https://github.com/safabio/modplots/issues)
 [![Stars](https://img.shields.io/github/stars/safabio/modplots?style=social)](https://github.com/safabio/modplots/)
 

@@ -18,7 +18,3 @@ loadingPlot(x, PC = "PC1", n = 10, return = FALSE)
 \description{
 Takes the rotation slot from the prcomp output object and plots the genes according to their absolute loading values.
 }
-\examples{
-loadingPlot(pca, PC = "PC1", n = 200)
-
-}

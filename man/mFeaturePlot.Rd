@@ -46,5 +46,5 @@ A grid.arrange plot if
 }
 \description{
 Colors single cells on a dimensional reduction plot according to a 'feature'
-(i.e. gene expression, PC scores, number of genes detected, etc.)
+(i.e. gene expression, PC scores, number of genes detected, etc.) Base Code taken from Seurat::DotPlot.
 }

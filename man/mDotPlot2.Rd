@@ -67,6 +67,8 @@ based on given features, default is FALSE}
 \item{scale.min}{Set lower limit for scaling, use NA for default}
 
 \item{scale.max}{Set upper limit for scaling, use NA for default}
+
+\item{gnames}{gnames table to use for annotation}
 }
 \value{
 A ggplot object
@@ -75,5 +77,5 @@ A ggplot object
 Intuitive way of visualizing how feature expression changes across different
 identity classes (clusters). The size of the dot encodes the percentage of
 cells within a class, while the color encodes the AverageExpression level
-across all cells within a class (blue is high).
+across all cells within a class (blue is high). Base Code taken from Seurat::DotPlot.
 }
