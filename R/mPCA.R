@@ -1,6 +1,7 @@
 #' mPCA
 #'
-#' Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation). Automatically returns pca object (prcomp output) to global env.
+#' Function to calculate PCA and create a biplot from a DESeq2 vst (variance stabilising transformation). Returns
+#' list of pca object (prcomp output) and ggplot biplot.
 #'
 #' @param vsd Variance stabilising transformed dds (vsd <- vst(dds)).
 #' @param ntop integer, number of variable genes or the first n elements of genes to use for PCA. Defaults to 200 top variable genes.
@@ -14,7 +15,6 @@
 #' @param pch vector of point characters if shape is specified, same length as factor levels in shape.
 #' @param colors color vector, should be same length as factor levels in group
 #' @param pt.size integer, sets pointsize in geom_point.
-#' @param return Boolean whether to return a plot (Default = FALSE) or a ggplot object list (TRUE)
 #'
 #' @importFrom MatrixGenerics rowVars
 #' @importFrom SummarizedExperiment assay
@@ -39,8 +39,7 @@ mPCA <- function(vsd,
                  shape = NULL,
                  pch = NULL,
                  colors = NULL,
-                 pt.size = 3,
-                 return = FALSE) {
+                 pt.size = 3) {
 
   if (!class(vsd)[[1]] == "DESeqTransform") {
     stop("vsd is not of class DESeqTransform!")
@@ -88,13 +87,13 @@ mPCA <- function(vsd,
   if (is.null(genes)) {
     rv <- rowVars(assay(vsd))
     select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
-    pca <<- prcomp(t(assay(vsd)[select, ]))
+    pca <- prcomp(t(assay(vsd)[select, ]))
   } else {
     subs <- assay(vsd)
     subs <- subs[rownames(subs) %in% genes, ]
     rv <- rowVars(subs)
     select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
-    pca <<- prcomp(t(subs[select, ]))
+    pca <- prcomp(t(subs[select, ]))
   }
 
   percentVar <- pca$sdev^2 / sum( pca$sdev^2 )
@@ -131,11 +130,7 @@ mPCA <- function(vsd,
     PC_plot <- PC_plot + scale_color_manual(values = colors)
   }
 
- if (return == TRUE) {
-   return(PC_plot)
- } else {
-   PC_plot
- }
-
+  output <- list(pca, PC_plot)
+  return(output)
 }
 

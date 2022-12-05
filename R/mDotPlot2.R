@@ -3,7 +3,7 @@
 #' Intuitive way of visualizing how feature expression changes across different
 #' identity classes (clusters). The size of the dot encodes the percentage of
 #' cells within a class, while the color encodes the AverageExpression level
-#' across all cells within a class (blue is high).
+#' across all cells within a class (blue is high). Base Code taken from Seurat::DotPlot.
 #'
 #' @param object Seurat object
 #' @param assay Name of assay to use, defaults to the active assay
@@ -32,6 +32,7 @@
 #' @param scale.by Scale the size of the points by 'size' or by 'radius'
 #' @param scale.min Set lower limit for scaling, use NA for default
 #' @param scale.max Set upper limit for scaling, use NA for default
+#' @param gnames gnames table to use for annotation
 #'
 #' @return A ggplot object
 #'
@@ -39,8 +40,9 @@
 #' @import rlang
 #' @import Seurat
 #' @import cowplot
-#' @import stats
 #' @import RColorBrewer
+#' @import ggplot2
+#' @importFrom stats hclust dist
 #'
 #' @export
 #'

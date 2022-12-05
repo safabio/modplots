@@ -17,7 +17,7 @@
 #'
 #' @importFrom dplyr mutate select left_join case_when
 #' @importFrom ggplot2 geom_point geom_hline geom_vline scale_fill_manual scale_size_manual scale_alpha_manual ylab
-#' theme_bw aes
+#' theme_bw aes .data
 #' @importFrom plotly ggplotly
 #'
 #' @return A ggplot plot if \code{return = FALSE}, or else a ggplot object.
@@ -43,11 +43,11 @@ mVolcanoplot <- function(table,
   }
 
   if (type == "seurat") {
-    table <- select(table, gene, avg_log2FC, p_val_adj)
+    table <- select(table, .data$gene, .data$avg_log2FC, .data$p_val_adj)
     colnames(table) <- c("Gene.stable.ID", "log2FC", "padj")
     table <- left_join(table, gnames, by = "Gene.stable.ID")
   } else if (type == "deseq2") {
-    table <- select(table, ID, log2FoldChange, padj)
+    table <- select(table, .data$ID, .data$log2FoldChange, .data$padj)
     colnames(table) <- c("Gene.stable.ID", "log2FC", "padj")
     table <- left_join(table, gnames, by = "Gene.stable.ID")
   } else if (type == "none") {
@@ -64,8 +64,8 @@ mVolcanoplot <- function(table,
   sizes <- c("up" = 2, "down" = 2, "ns" = 1)
   alphas <- c("up" = 1, "down" = 1, "ns" = 0.5)
 
-  toplot <-  mutate(table, gene_type = case_when(log2FC >= l2fc & padj <= p.adj ~ "up",
-                                 log2FC <= -l2fc & padj <= p.adj ~ "down",
+  toplot <-  mutate(table, gene_type = case_when(.data$log2FC >= l2fc & .data$padj <= p.adj ~ "up",
+                                                 .data$log2FC <= -l2fc & .data$padj <= p.adj ~ "down",
                                  TRUE ~ "ns"))
 
   toplot$padj <- -log10(toplot$padj)
@@ -73,12 +73,12 @@ mVolcanoplot <- function(table,
 
 
   volplot <-   ggplot(data = toplot,
-                     aes(x = log2FC,
-                         y = padj,
-                         label = Gene.name,
-                         fill = gene_type,
-                         size = gene_type,
-                         alpha = gene_type)) +
+                     aes_string(x = "log2FC",
+                         y = "padj",
+                         label = "Gene.name",
+                         fill = "gene_type",
+                         size = "gene_type",
+                         alpha = "gene_type")) +
     geom_point(shape = 21) +
     geom_hline(yintercept = -log10(p.adj), linetype = "dashed") +
     geom_vline(xintercept = c(-l2fc,l2fc), linetype = "dashed") +

@@ -15,8 +15,7 @@ mPCA(
   shape = NULL,
   pch = NULL,
   colors = NULL,
-  pt.size = 3,
-  return = FALSE
+  pt.size = 3
 )
 }
 \arguments{
@@ -42,9 +41,8 @@ If you specify a meta data frame, you have to also specify group, which should b
 \item{colors}{color vector, should be same length as factor levels in group}
 
 \item{pt.size}{integer, sets pointsize in geom_point.}
-
-\item{return}{Boolean whether to return a plot (Default = FALSE) or a ggplot object list (TRUE)}
 }
 \description{
-Function to plot PCA biplot from a DESeq2 vst (variance stabilising transformation). Automatically returns pca object (prcomp output) to global env.
+Function to calculate PCA and create a biplot from a DESeq2 vst (variance stabilising transformation). Returns
+list of pca object (prcomp output) and ggplot biplot.
 }
