@@ -61,3 +61,7 @@ Plots the absolute loadings of a prcomp object. At the same time it adds the nam
 ## gnames
 
 Gg6 gene ID and name table. For details use: `?gnames`.
+
+## GOgenes
+
+Function that takes the limma::goana output table and the ENTREZ IDs for the goana geneset and maps the genes to the GO terms that are enriched. Output is a table that contains GO term ID and annotation, Gene ID and names, as well as the goana output data (enrichment).
