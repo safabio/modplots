@@ -1,7 +1,7 @@
 Package: modplots
 Type: Package
 Title: Modified version of common Seurat and other plotting functions
-Version: 0.1.2
+Version: 1.0.0
 Author: Fabio Sacher
 Maintainer: Fabio Sacher <fabio.sacher@unibas.ch>
 Description: This package contains plotting functions, that build on existing functions but adds practical options. 
