@@ -146,7 +146,6 @@ mDotPlot2 <- function(
     }
   )
   names(x = data.plot) <- unique(x = data.features$id)
-  hclust.idents <- "No clustering based on idents!"
   if (cluster.idents) {
     mat <- do.call(
       what = rbind,
@@ -289,7 +288,11 @@ mDotPlot2 <- function(
   if (!is.null(gnames)){ ###
     plot = plot + scale_x_discrete(labels = pgenes) ###
   }
+  output <- plot
 
-  output <- list(plot, hclust.idents)
+  if (cluster.idents) {
+    output <- list(plot, hclust.idents)
+  }
+
   return(output)
 }
