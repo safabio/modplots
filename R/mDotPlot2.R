@@ -146,6 +146,7 @@ mDotPlot2 <- function(
     }
   )
   names(x = data.plot) <- unique(x = data.features$id)
+  hclust.idents <- "No clustering based on idents!"
   if (cluster.idents) {
     mat <- do.call(
       what = rbind,
@@ -153,7 +154,7 @@ mDotPlot2 <- function(
     )
     mat <- scale(x = mat)
     ## save the hclust object to plot dendrogram later
-    hclust.idents <<- hclust(d = dist(x = mat))
+    hclust.idents <- hclust(d = dist(x = mat))
     id.levels <- id.levels[hclust(d = dist(x = mat))$order]
   }
   data.plot <- lapply(
@@ -289,5 +290,6 @@ mDotPlot2 <- function(
     plot = plot + scale_x_discrete(labels = pgenes) ###
   }
 
-  return(plot)
+  output <- list(plot, hclust.idents)
+  return(output)
 }
