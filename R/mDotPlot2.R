@@ -152,6 +152,8 @@ mDotPlot2 <- function(
       args = lapply(X = data.plot, FUN = unlist)
     )
     mat <- scale(x = mat)
+    ## save the hclust object to plot dendrogram later
+    hclust.idents <<- hclust(d = dist(x = mat))
     id.levels <- id.levels[hclust(d = dist(x = mat))$order]
   }
   data.plot <- lapply(
@@ -286,5 +288,6 @@ mDotPlot2 <- function(
   if (!is.null(gnames)){ ###
     plot = plot + scale_x_discrete(labels = pgenes) ###
   }
+
   return(plot)
 }
