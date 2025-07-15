@@ -12,6 +12,8 @@
 #'             gnames[i,"Gene.name"] <- gnames[i,"Gene.name"])
 #'    }
 #'    gnames$Gene.name <- make.unique(gnames$Gene.name, sep = "v")
+#'    gnames <- gnames %>%
+#'        mutate(Name = str_replace(Name, "^ENSGALG0+","EG"))
 #' }
 #' @format A data frame with 24356 rows and 2 variables:
 #' \describe{
